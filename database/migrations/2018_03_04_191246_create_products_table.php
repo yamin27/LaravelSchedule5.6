@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->date('renew_date');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

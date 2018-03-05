@@ -39,20 +39,19 @@ class RenewReminderEmail extends Command
     {
         //fetch the renew date before 1 month
         $renew_product = \App\Product::where('renew_date', today()->addMonth())->get();
+//        return $renew_product;
 
         if (!is_null($renew_product))
         {
             foreach($renew_product as $renew) {
-
                 // Send the email to user
                 \Mail::send('email', ['renew' => $renew], function ($mail) use ($renew) {
-                    $mail->to($renew->email)
+                    $mail->to($renew->users->email)
                         ->from('support@yourcompany.com', 'Your Name')
                         ->subject('Product Renew ');
                 });
             }
         }
-
-        $this->info('Renew Email Send Successfully');
+        $this->info('Renew Email Send Successfully ');
     }
 }

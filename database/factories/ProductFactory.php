@@ -1,7 +1,6 @@
 <?php
 
 use Faker\Generator as Faker;
-use Carbon\Carbon;
 
 $factory->define(\App\Product::class, function (Faker $faker) {
     $user = \App\User::all()->map(function($item) { return $item->id; });
