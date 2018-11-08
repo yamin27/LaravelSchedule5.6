@@ -30,8 +30,7 @@ MAIL_ENCRYPTION=tls
 composer install
 
 # Database migration and seeding 
-php artisan migrate 
-php artisan db:seed
+php artisan migrate --seed
 
 # run the project
 php artisan serve
